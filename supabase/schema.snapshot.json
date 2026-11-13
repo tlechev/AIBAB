@@ -1,0 +1,2361 @@
+{
+  "roles": [
+    {
+      "name": "aibab_app",
+      "login": true,
+      "inherit": false,
+      "superuser": false,
+      "createdb": false,
+      "createrole": false,
+      "replication": false,
+      "bypassrls": false,
+      "config": []
+    },
+    {
+      "name": "aibab_definer",
+      "login": false,
+      "inherit": false,
+      "superuser": false,
+      "createdb": false,
+      "createrole": false,
+      "replication": false,
+      "bypassrls": false,
+      "config": []
+    },
+    {
+      "name": "aibab_user",
+      "login": false,
+      "inherit": false,
+      "superuser": false,
+      "createdb": false,
+      "createrole": false,
+      "replication": false,
+      "bypassrls": false,
+      "config": []
+    }
+  ],
+  "roleMemberships": [
+    {
+      "role": "aibab_app",
+      "member": "postgres",
+      "grantor": "supabase_admin",
+      "admin": true,
+      "inherit": false,
+      "set": false
+    },
+    {
+      "role": "aibab_definer",
+      "member": "postgres",
+      "grantor": "postgres",
+      "admin": false,
+      "inherit": false,
+      "set": true
+    },
+    {
+      "role": "aibab_definer",
+      "member": "postgres",
+      "grantor": "supabase_admin",
+      "admin": true,
+      "inherit": false,
+      "set": false
+    },
+    {
+      "role": "aibab_user",
+      "member": "aibab_app",
+      "grantor": "postgres",
+      "admin": false,
+      "inherit": false,
+      "set": true
+    },
+    {
+      "role": "aibab_user",
+      "member": "postgres",
+      "grantor": "supabase_admin",
+      "admin": true,
+      "inherit": false,
+      "set": false
+    }
+  ],
+  "schemas": [
+    {
+      "schema": "app",
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=U/postgres",
+        "aibab_user=U/postgres",
+        "postgres=UC/postgres"
+      ]
+    },
+    {
+      "schema": "app_private",
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=U/postgres",
+        "aibab_user=U/postgres",
+        "postgres=UC/postgres"
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "assistant_tone",
+      "kind": "e",
+      "owner": "postgres"
+    },
+    {
+      "name": "industry",
+      "kind": "e",
+      "owner": "postgres"
+    },
+    {
+      "name": "member_role",
+      "kind": "e",
+      "owner": "postgres"
+    },
+    {
+      "name": "price_unit",
+      "kind": "e",
+      "owner": "postgres"
+    },
+    {
+      "name": "slot_mode",
+      "kind": "e",
+      "owner": "postgres"
+    }
+  ],
+  "enums": [
+    {
+      "name": "assistant_tone",
+      "values": [
+        "formal",
+        "friendly"
+      ]
+    },
+    {
+      "name": "industry",
+      "values": [
+        "hvac",
+        "plumbing_electrical",
+        "renovation",
+        "other"
+      ]
+    },
+    {
+      "name": "member_role",
+      "values": [
+        "owner",
+        "admin",
+        "staff"
+      ]
+    },
+    {
+      "name": "price_unit",
+      "values": [
+        "job",
+        "hour",
+        "unit",
+        "square_meter",
+        "linear_meter"
+      ]
+    },
+    {
+      "name": "slot_mode",
+      "values": [
+        "time_window",
+        "exact_time"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table": "assistant_profiles",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=a/postgres",
+        "aibab_user=rw/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "booking_settings",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=a/postgres",
+        "aibab_user=rw/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "business_hours",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_user=arwd/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "faq_entries",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_user=arwd/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=a/postgres",
+        "aibab_user=d/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "memberships",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=ar/postgres",
+        "aibab_user=rd/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=ar/postgres",
+        "aibab_user=r/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "profiles",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_definer=a/postgres",
+        "aibab_user=r/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "service_areas",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_user=arwd/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    },
+    {
+      "table": "services",
+      "rls": true,
+      "force_rls": false,
+      "owner": "postgres",
+      "acl": [
+        "aibab_user=arwd/postgres",
+        "postgres=arwdDxtm/postgres"
+      ]
+    }
+  ],
+  "columns": [
+    {
+      "table": "assistant_profiles",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "assistant_name",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "greeting",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "tone",
+      "type": "app.assistant_tone",
+      "not_null": true,
+      "default": "'friendly'::app.assistant_tone",
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "custom_instructions",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "handoff_keywords",
+      "type": "text[]",
+      "not_null": true,
+      "default": "'{}'::text[]",
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "handoff_outside_business_hours",
+      "type": "boolean",
+      "not_null": true,
+      "default": "true",
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "is_enabled",
+      "type": "boolean",
+      "not_null": true,
+      "default": "false",
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "assistant_profiles",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "slot_mode",
+      "type": "app.slot_mode",
+      "not_null": true,
+      "default": "'time_window'::app.slot_mode",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "time_windows",
+      "type": "jsonb",
+      "not_null": true,
+      "default": "'[]'::jsonb",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "capacity_per_slot",
+      "type": "integer",
+      "not_null": true,
+      "default": "1",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "min_notice_hours",
+      "type": "integer",
+      "not_null": true,
+      "default": "2",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "max_days_ahead",
+      "type": "integer",
+      "not_null": true,
+      "default": "30",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "auto_confirm_appointments",
+      "type": "boolean",
+      "not_null": true,
+      "default": "false",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "booking_settings",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "weekday",
+      "type": "smallint",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "opens_at",
+      "type": "time without time zone",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "closes_at",
+      "type": "time without time zone",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "business_hours",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "question",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "answer",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "service_id",
+      "type": "uuid",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "is_active",
+      "type": "boolean",
+      "not_null": true,
+      "default": "true",
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "sort_order",
+      "type": "integer",
+      "not_null": true,
+      "default": "0",
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "faq_entries",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "invitations",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "email",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "role",
+      "type": "app.member_role",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "token_hash",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "invitations",
+      "column": "invited_by",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "expires_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "accepted_at",
+      "type": "timestamp with time zone",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "revoked_at",
+      "type": "timestamp with time zone",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=rw/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "invitations",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": [
+        "aibab_user=r/postgres"
+      ]
+    },
+    {
+      "table": "memberships",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "memberships",
+      "column": "user_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "memberships",
+      "column": "role",
+      "type": "app.member_role",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "memberships",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "memberships",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "organizations",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": []
+    },
+    {
+      "table": "organizations",
+      "column": "name",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "slug",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "industry",
+      "type": "app.industry",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "country_code",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "organizations",
+      "column": "default_locale",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "timezone",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "currency",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "organizations",
+      "column": "registration_number",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "phone",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "email",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "website",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "address_line",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "city",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "postal_code",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "organizations",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "organizations",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "profiles",
+      "column": "user_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "profiles",
+      "column": "full_name",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "profiles",
+      "column": "locale",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": [
+        "aibab_user=w/postgres"
+      ]
+    },
+    {
+      "table": "profiles",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "profiles",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "name",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "notes",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "is_active",
+      "type": "boolean",
+      "not_null": true,
+      "default": "true",
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "sort_order",
+      "type": "integer",
+      "not_null": true,
+      "default": "0",
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "service_areas",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "id",
+      "type": "uuid",
+      "not_null": true,
+      "default": "gen_random_uuid()",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "organization_id",
+      "type": "uuid",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "name",
+      "type": "text",
+      "not_null": true,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "description",
+      "type": "text",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "price_from_cents",
+      "type": "integer",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "price_to_cents",
+      "type": "integer",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "price_unit",
+      "type": "app.price_unit",
+      "not_null": true,
+      "default": "'job'::app.price_unit",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "duration_minutes",
+      "type": "integer",
+      "not_null": false,
+      "default": null,
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "requires_inspection",
+      "type": "boolean",
+      "not_null": true,
+      "default": "false",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "is_active",
+      "type": "boolean",
+      "not_null": true,
+      "default": "true",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "sort_order",
+      "type": "integer",
+      "not_null": true,
+      "default": "0",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "created_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    },
+    {
+      "table": "services",
+      "column": "updated_at",
+      "type": "timestamp with time zone",
+      "not_null": true,
+      "default": "now()",
+      "acl": []
+    }
+  ],
+  "constraints": [
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_custom_instructions_check",
+      "type": "c",
+      "definition": "CHECK (((custom_instructions IS NULL) OR (char_length(custom_instructions) <= 4000)))"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_greeting_check",
+      "type": "c",
+      "definition": "CHECK (((greeting IS NULL) OR (char_length(greeting) <= 500)))"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_handoff_keywords_check",
+      "type": "c",
+      "definition": "CHECK (((cardinality(handoff_keywords) <= 50) AND (array_position(handoff_keywords, NULL::text) IS NULL) AND (char_length(array_to_string(handoff_keywords, ''::text)) <= 3000)))"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_name_check",
+      "type": "c",
+      "definition": "CHECK ((((char_length(assistant_name) >= 1) AND (char_length(assistant_name) <= 60)) AND (assistant_name = btrim(assistant_name)) AND (assistant_name !~ '[[:cntrl:]]'::text)))"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (organization_id)"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_capacity_check",
+      "type": "c",
+      "definition": "CHECK (((capacity_per_slot >= 1) AND (capacity_per_slot <= 100)))"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_max_days_ahead_check",
+      "type": "c",
+      "definition": "CHECK (((max_days_ahead >= 1) AND (max_days_ahead <= 365)))"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_min_notice_check",
+      "type": "c",
+      "definition": "CHECK (((min_notice_hours >= 0) AND (min_notice_hours <= 720)))"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (organization_id)"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_time_windows_check",
+      "type": "c",
+      "definition": "CHECK (app_private.is_valid_time_windows(time_windows))"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_interval_check",
+      "type": "c",
+      "definition": "CHECK ((opens_at < closes_at))"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_no_overlap",
+      "type": "x",
+      "definition": "EXCLUDE USING gist (organization_id WITH =, weekday WITH =, tsrange(('2000-01-01'::date + opens_at), ('2000-01-01'::date + closes_at), '[)'::text) WITH &&)"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_organization_id_id_key",
+      "type": "u",
+      "definition": "UNIQUE (organization_id, id)"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_weekday_check",
+      "type": "c",
+      "definition": "CHECK (((weekday >= 1) AND (weekday <= 7)))"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_answer_check",
+      "type": "c",
+      "definition": "CHECK (((char_length(answer) >= 1) AND (char_length(answer) <= 4000)))"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_organization_id_id_key",
+      "type": "u",
+      "definition": "UNIQUE (organization_id, id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_question_check",
+      "type": "c",
+      "definition": "CHECK ((((char_length(question) >= 1) AND (char_length(question) <= 500)) AND (question = btrim(question))))"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_service_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id, service_id) REFERENCES app.services(organization_id, id) ON DELETE SET NULL (service_id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_sort_order_check",
+      "type": "c",
+      "definition": "CHECK (((sort_order >= 0) AND (sort_order <= 10000)))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_email_check",
+      "type": "c",
+      "definition": "CHECK (((char_length(email) <= 254) AND (email = lower(btrim(email))) AND (email ~ '^[^@[:space:]]+@[^@[:space:]]+\\.[^@[:space:]]+$'::text)))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_expiry_check",
+      "type": "c",
+      "definition": "CHECK (((expires_at > created_at) AND (expires_at <= (created_at + '30 days'::interval))))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_invited_by_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id, invited_by) REFERENCES app.memberships(organization_id, user_id) ON DELETE CASCADE"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_organization_id_id_key",
+      "type": "u",
+      "definition": "UNIQUE (organization_id, id)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_role_check",
+      "type": "c",
+      "definition": "CHECK ((role = ANY (ARRAY['admin'::app.member_role, 'staff'::app.member_role])))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_state_check",
+      "type": "c",
+      "definition": "CHECK (((accepted_at IS NULL) OR (revoked_at IS NULL)))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_token_hash_check",
+      "type": "c",
+      "definition": "CHECK ((token_hash ~ '^[0-9a-f]{64}$'::text))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_token_hash_key",
+      "type": "u",
+      "definition": "UNIQUE (token_hash)"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (organization_id, user_id)"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES app.profiles(user_id) ON DELETE CASCADE"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_address_line_check",
+      "type": "c",
+      "definition": "CHECK (((address_line IS NULL) OR (char_length(address_line) <= 300)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_city_check",
+      "type": "c",
+      "definition": "CHECK (((city IS NULL) OR (char_length(city) <= 120)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_country_code_check",
+      "type": "c",
+      "definition": "CHECK ((country_code ~ '^[A-Z]{2}$'::text))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_currency_check",
+      "type": "c",
+      "definition": "CHECK ((currency = 'EUR'::text))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_default_locale_check",
+      "type": "c",
+      "definition": "CHECK ((default_locale = ANY (ARRAY['bg'::text, 'en'::text])))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_email_check",
+      "type": "c",
+      "definition": "CHECK (((email IS NULL) OR ((char_length(email) <= 254) AND (email ~ '^[^@[:space:]]+@[^@[:space:]]+\\.[^@[:space:]]+$'::text))))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_name_check",
+      "type": "c",
+      "definition": "CHECK ((((char_length(name) >= 1) AND (char_length(name) <= 200)) AND (name = btrim(name)) AND (name !~ '[[:cntrl:]]'::text)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_phone_check",
+      "type": "c",
+      "definition": "CHECK (((phone IS NULL) OR (phone ~ '^\\+[1-9][0-9]{6,14}$'::text)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_postal_code_check",
+      "type": "c",
+      "definition": "CHECK (((postal_code IS NULL) OR (char_length(postal_code) <= 20)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_registration_number_check",
+      "type": "c",
+      "definition": "CHECK (((registration_number IS NULL) OR ((char_length(registration_number) >= 1) AND (char_length(registration_number) <= 50))))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_slug_check",
+      "type": "c",
+      "definition": "CHECK (((slug ~ '^[a-z0-9][a-z0-9-]{1,58}[a-z0-9]$'::text) AND (slug !~ '--'::text)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_slug_key",
+      "type": "u",
+      "definition": "UNIQUE (slug)"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_slug_reserved_check",
+      "type": "c",
+      "definition": "CHECK ((slug <> ALL (ARRAY['admin'::text, 'api'::text, 'app'::text, 'assets'::text, 'auth'::text, 'dashboard'::text, 'help'::text, 'login'::text, 'logout'::text, 'register'::text, 'settings'::text, 'signup'::text, 'static'::text, 'support'::text, 'widget'::text, 'www'::text])))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_website_check",
+      "type": "c",
+      "definition": "CHECK (((website IS NULL) OR ((char_length(website) <= 2048) AND (website ~ '^https?://'::text))))"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_full_name_check",
+      "type": "c",
+      "definition": "CHECK (((full_name IS NULL) OR (((char_length(full_name) >= 1) AND (char_length(full_name) <= 200)) AND (full_name !~ '[[:cntrl:]]'::text))))"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_locale_check",
+      "type": "c",
+      "definition": "CHECK (((locale IS NULL) OR (locale = ANY (ARRAY['bg'::text, 'en'::text]))))"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_name_check",
+      "type": "c",
+      "definition": "CHECK ((((char_length(name) >= 1) AND (char_length(name) <= 120)) AND (name = btrim(name)) AND (name !~ '[[:cntrl:]]'::text)))"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_notes_check",
+      "type": "c",
+      "definition": "CHECK (((notes IS NULL) OR (char_length(notes) <= 1000)))"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_organization_id_id_key",
+      "type": "u",
+      "definition": "UNIQUE (organization_id, id)"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_sort_order_check",
+      "type": "c",
+      "definition": "CHECK (((sort_order >= 0) AND (sort_order <= 10000)))"
+    },
+    {
+      "table": "services",
+      "name": "services_description_check",
+      "type": "c",
+      "definition": "CHECK (((description IS NULL) OR (char_length(description) <= 4000)))"
+    },
+    {
+      "table": "services",
+      "name": "services_duration_check",
+      "type": "c",
+      "definition": "CHECK (((duration_minutes IS NULL) OR ((duration_minutes >= 1) AND (duration_minutes <= 10080))))"
+    },
+    {
+      "table": "services",
+      "name": "services_name_check",
+      "type": "c",
+      "definition": "CHECK ((((char_length(name) >= 1) AND (char_length(name) <= 200)) AND (name = btrim(name)) AND (name !~ '[[:cntrl:]]'::text)))"
+    },
+    {
+      "table": "services",
+      "name": "services_organization_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES app.organizations(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "services",
+      "name": "services_organization_id_id_key",
+      "type": "u",
+      "definition": "UNIQUE (organization_id, id)"
+    },
+    {
+      "table": "services",
+      "name": "services_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table": "services",
+      "name": "services_price_from_check",
+      "type": "c",
+      "definition": "CHECK (((price_from_cents IS NULL) OR (price_from_cents >= 0)))"
+    },
+    {
+      "table": "services",
+      "name": "services_price_range_check",
+      "type": "c",
+      "definition": "CHECK (((price_to_cents IS NULL) OR ((price_from_cents IS NOT NULL) AND (price_to_cents >= price_from_cents))))"
+    },
+    {
+      "table": "services",
+      "name": "services_sort_order_check",
+      "type": "c",
+      "definition": "CHECK (((sort_order >= 0) AND (sort_order <= 10000)))"
+    }
+  ],
+  "indexes": [
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_pkey",
+      "definition": "CREATE UNIQUE INDEX assistant_profiles_pkey ON app.assistant_profiles USING btree (organization_id)"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_pkey",
+      "definition": "CREATE UNIQUE INDEX booking_settings_pkey ON app.booking_settings USING btree (organization_id)"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_no_overlap",
+      "definition": "CREATE INDEX business_hours_no_overlap ON app.business_hours USING gist (organization_id, weekday, tsrange(('2000-01-01'::date + opens_at), ('2000-01-01'::date + closes_at), '[)'::text))"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_organization_id_id_key",
+      "definition": "CREATE UNIQUE INDEX business_hours_organization_id_id_key ON app.business_hours USING btree (organization_id, id)"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_pkey",
+      "definition": "CREATE UNIQUE INDEX business_hours_pkey ON app.business_hours USING btree (id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_organization_id_id_key",
+      "definition": "CREATE UNIQUE INDEX faq_entries_organization_id_id_key ON app.faq_entries USING btree (organization_id, id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_pkey",
+      "definition": "CREATE UNIQUE INDEX faq_entries_pkey ON app.faq_entries USING btree (id)"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_service_idx",
+      "definition": "CREATE INDEX faq_entries_service_idx ON app.faq_entries USING btree (organization_id, service_id)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_invited_by_idx",
+      "definition": "CREATE INDEX invitations_invited_by_idx ON app.invitations USING btree (organization_id, invited_by)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_organization_id_id_key",
+      "definition": "CREATE UNIQUE INDEX invitations_organization_id_id_key ON app.invitations USING btree (organization_id, id)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_pending_email_key",
+      "definition": "CREATE UNIQUE INDEX invitations_pending_email_key ON app.invitations USING btree (organization_id, email) WHERE ((accepted_at IS NULL) AND (revoked_at IS NULL))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_pkey",
+      "definition": "CREATE UNIQUE INDEX invitations_pkey ON app.invitations USING btree (id)"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_token_hash_key",
+      "definition": "CREATE UNIQUE INDEX invitations_token_hash_key ON app.invitations USING btree (token_hash)"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_pkey",
+      "definition": "CREATE UNIQUE INDEX memberships_pkey ON app.memberships USING btree (organization_id, user_id)"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_user_id_idx",
+      "definition": "CREATE INDEX memberships_user_id_idx ON app.memberships USING btree (user_id)"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_pkey",
+      "definition": "CREATE UNIQUE INDEX organizations_pkey ON app.organizations USING btree (id)"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_slug_key",
+      "definition": "CREATE UNIQUE INDEX organizations_slug_key ON app.organizations USING btree (slug)"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_pkey",
+      "definition": "CREATE UNIQUE INDEX profiles_pkey ON app.profiles USING btree (user_id)"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_organization_id_id_key",
+      "definition": "CREATE UNIQUE INDEX service_areas_organization_id_id_key ON app.service_areas USING btree (organization_id, id)"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_organization_id_name_key",
+      "definition": "CREATE UNIQUE INDEX service_areas_organization_id_name_key ON app.service_areas USING btree (organization_id, lower(name))"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_pkey",
+      "definition": "CREATE UNIQUE INDEX service_areas_pkey ON app.service_areas USING btree (id)"
+    },
+    {
+      "table": "services",
+      "name": "services_organization_id_id_key",
+      "definition": "CREATE UNIQUE INDEX services_organization_id_id_key ON app.services USING btree (organization_id, id)"
+    },
+    {
+      "table": "services",
+      "name": "services_organization_id_name_key",
+      "definition": "CREATE UNIQUE INDEX services_organization_id_name_key ON app.services USING btree (organization_id, lower(name))"
+    },
+    {
+      "table": "services",
+      "name": "services_pkey",
+      "definition": "CREATE UNIQUE INDEX services_pkey ON app.services USING btree (id)"
+    }
+  ],
+  "policies": [
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "true"
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "true"
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "booking_settings",
+      "name": "booking_settings_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": null,
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "business_hours",
+      "name": "business_hours_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": null,
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "faq_entries",
+      "name": "faq_entries_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "((accepted_at IS NULL) AND (revoked_at IS NULL))"
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "invitations",
+      "name": "invitations_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "((organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids)) AND (accepted_at IS NULL) AND (revoked_at IS NULL))",
+      "with_check": "((organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids)) AND (revoked_at IS NOT NULL))"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "true"
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_definer_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": "true",
+      "with_check": null
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "((organization_id IN ( SELECT app_private.my_organization_ids('{owner}'::app.member_role[]) AS my_organization_ids)) OR ((organization_id IN ( SELECT app_private.my_organization_ids('{admin}'::app.member_role[]) AS my_organization_ids)) AND (role <> 'owner'::app.member_role)) OR (user_id = app_private.current_user_id()))",
+      "with_check": null
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "memberships",
+      "name": "memberships_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "((organization_id IN ( SELECT app_private.my_organization_ids('{owner}'::app.member_role[]) AS my_organization_ids)) OR ((organization_id IN ( SELECT app_private.my_organization_ids('{admin}'::app.member_role[]) AS my_organization_ids)) AND (role <> 'owner'::app.member_role)))",
+      "with_check": "((organization_id IN ( SELECT app_private.my_organization_ids('{owner}'::app.member_role[]) AS my_organization_ids)) OR ((organization_id IN ( SELECT app_private.my_organization_ids('{admin}'::app.member_role[]) AS my_organization_ids)) AND (role <> 'owner'::app.member_role)))"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "true"
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_definer_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": "true",
+      "with_check": null
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "organizations",
+      "name": "organizations_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_definer_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_definer"
+      ],
+      "using": null,
+      "with_check": "true"
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "((user_id = app_private.current_user_id()) OR app_private.shares_organization_with(user_id))",
+      "with_check": null
+    },
+    {
+      "table": "profiles",
+      "name": "profiles_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(user_id = app_private.current_user_id())",
+      "with_check": "(user_id = app_private.current_user_id())"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": null,
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "service_areas",
+      "name": "service_areas_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "services",
+      "name": "services_delete",
+      "command": "DELETE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "services",
+      "name": "services_insert",
+      "command": "INSERT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": null,
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    },
+    {
+      "table": "services",
+      "name": "services_select",
+      "command": "SELECT",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids() AS my_organization_ids))",
+      "with_check": null
+    },
+    {
+      "table": "services",
+      "name": "services_update",
+      "command": "UPDATE",
+      "roles": [
+        "aibab_user"
+      ],
+      "using": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))",
+      "with_check": "(organization_id IN ( SELECT app_private.my_organization_ids('{owner,admin}'::app.member_role[]) AS my_organization_ids))"
+    }
+  ],
+  "functions": [
+    {
+      "signature": "app_private.current_user_id()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "s",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/postgres",
+        "aibab_user=X/postgres",
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.enforce_invitation_revocation()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.handle_new_user()",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer"
+      ]
+    },
+    {
+      "signature": "app_private.is_valid_time_windows(jsonb)",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "i",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/postgres",
+        "aibab_user=X/postgres",
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.my_organization_ids(app.member_role[])",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "s",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer",
+        "aibab_user=X/aibab_definer"
+      ]
+    },
+    {
+      "signature": "app_private.prevent_organization_id_change()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.protect_last_owner()",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer"
+      ]
+    },
+    {
+      "signature": "app_private.set_created_timestamps()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.set_updated_at()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app_private.shares_organization_with(uuid)",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "s",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer",
+        "aibab_user=X/aibab_definer"
+      ]
+    },
+    {
+      "signature": "app_private.validate_organization_timezone()",
+      "owner": "postgres",
+      "security_definer": false,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "postgres=X/postgres"
+      ]
+    },
+    {
+      "signature": "app.create_invitation(uuid,text,app.member_role,integer)",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer",
+        "aibab_user=X/aibab_definer"
+      ]
+    },
+    {
+      "signature": "app.create_organization(text,text,app.industry,text,text,text,text,text)",
+      "owner": "aibab_definer",
+      "security_definer": true,
+      "volatility": "v",
+      "config": [
+        "search_path=\"\""
+      ],
+      "acl": [
+        "aibab_definer=X/aibab_definer",
+        "aibab_user=X/aibab_definer"
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "schema": "app",
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER assistant_profiles_prevent_organization_id_change BEFORE UPDATE ON app.assistant_profiles FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_set_created_timestamps",
+      "definition": "CREATE TRIGGER assistant_profiles_set_created_timestamps BEFORE INSERT ON app.assistant_profiles FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "assistant_profiles",
+      "name": "assistant_profiles_set_updated_at",
+      "definition": "CREATE TRIGGER assistant_profiles_set_updated_at BEFORE UPDATE ON app.assistant_profiles FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "booking_settings",
+      "name": "booking_settings_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER booking_settings_prevent_organization_id_change BEFORE UPDATE ON app.booking_settings FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "booking_settings",
+      "name": "booking_settings_set_created_timestamps",
+      "definition": "CREATE TRIGGER booking_settings_set_created_timestamps BEFORE INSERT ON app.booking_settings FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "booking_settings",
+      "name": "booking_settings_set_updated_at",
+      "definition": "CREATE TRIGGER booking_settings_set_updated_at BEFORE UPDATE ON app.booking_settings FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "business_hours",
+      "name": "business_hours_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER business_hours_prevent_organization_id_change BEFORE UPDATE ON app.business_hours FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "business_hours",
+      "name": "business_hours_set_created_timestamps",
+      "definition": "CREATE TRIGGER business_hours_set_created_timestamps BEFORE INSERT ON app.business_hours FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "business_hours",
+      "name": "business_hours_set_updated_at",
+      "definition": "CREATE TRIGGER business_hours_set_updated_at BEFORE UPDATE ON app.business_hours FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "faq_entries",
+      "name": "faq_entries_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER faq_entries_prevent_organization_id_change BEFORE UPDATE ON app.faq_entries FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "faq_entries",
+      "name": "faq_entries_set_created_timestamps",
+      "definition": "CREATE TRIGGER faq_entries_set_created_timestamps BEFORE INSERT ON app.faq_entries FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "faq_entries",
+      "name": "faq_entries_set_updated_at",
+      "definition": "CREATE TRIGGER faq_entries_set_updated_at BEFORE UPDATE ON app.faq_entries FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "invitations",
+      "name": "invitations_enforce_revocation",
+      "definition": "CREATE TRIGGER invitations_enforce_revocation BEFORE UPDATE OF revoked_at ON app.invitations FOR EACH ROW EXECUTE FUNCTION app_private.enforce_invitation_revocation()"
+    },
+    {
+      "schema": "app",
+      "table": "invitations",
+      "name": "invitations_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER invitations_prevent_organization_id_change BEFORE UPDATE ON app.invitations FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "invitations",
+      "name": "invitations_set_created_timestamps",
+      "definition": "CREATE TRIGGER invitations_set_created_timestamps BEFORE INSERT ON app.invitations FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "invitations",
+      "name": "invitations_set_updated_at",
+      "definition": "CREATE TRIGGER invitations_set_updated_at BEFORE UPDATE ON app.invitations FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "memberships",
+      "name": "memberships_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER memberships_prevent_organization_id_change BEFORE UPDATE ON app.memberships FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "memberships",
+      "name": "memberships_protect_last_owner",
+      "definition": "CREATE TRIGGER memberships_protect_last_owner BEFORE DELETE OR UPDATE OF role ON app.memberships FOR EACH ROW EXECUTE FUNCTION app_private.protect_last_owner()"
+    },
+    {
+      "schema": "app",
+      "table": "memberships",
+      "name": "memberships_set_updated_at",
+      "definition": "CREATE TRIGGER memberships_set_updated_at BEFORE UPDATE ON app.memberships FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "organizations",
+      "name": "organizations_set_updated_at",
+      "definition": "CREATE TRIGGER organizations_set_updated_at BEFORE UPDATE ON app.organizations FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "organizations",
+      "name": "organizations_validate_timezone",
+      "definition": "CREATE TRIGGER organizations_validate_timezone BEFORE INSERT OR UPDATE OF timezone ON app.organizations FOR EACH ROW EXECUTE FUNCTION app_private.validate_organization_timezone()"
+    },
+    {
+      "schema": "app",
+      "table": "profiles",
+      "name": "profiles_set_updated_at",
+      "definition": "CREATE TRIGGER profiles_set_updated_at BEFORE UPDATE ON app.profiles FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "service_areas",
+      "name": "service_areas_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER service_areas_prevent_organization_id_change BEFORE UPDATE ON app.service_areas FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "service_areas",
+      "name": "service_areas_set_created_timestamps",
+      "definition": "CREATE TRIGGER service_areas_set_created_timestamps BEFORE INSERT ON app.service_areas FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "service_areas",
+      "name": "service_areas_set_updated_at",
+      "definition": "CREATE TRIGGER service_areas_set_updated_at BEFORE UPDATE ON app.service_areas FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "app",
+      "table": "services",
+      "name": "services_prevent_organization_id_change",
+      "definition": "CREATE TRIGGER services_prevent_organization_id_change BEFORE UPDATE ON app.services FOR EACH ROW EXECUTE FUNCTION app_private.prevent_organization_id_change()"
+    },
+    {
+      "schema": "app",
+      "table": "services",
+      "name": "services_set_created_timestamps",
+      "definition": "CREATE TRIGGER services_set_created_timestamps BEFORE INSERT ON app.services FOR EACH ROW EXECUTE FUNCTION app_private.set_created_timestamps()"
+    },
+    {
+      "schema": "app",
+      "table": "services",
+      "name": "services_set_updated_at",
+      "definition": "CREATE TRIGGER services_set_updated_at BEFORE UPDATE ON app.services FOR EACH ROW EXECUTE FUNCTION app_private.set_updated_at()"
+    },
+    {
+      "schema": "auth",
+      "table": "users",
+      "name": "on_auth_user_created",
+      "definition": "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION app_private.handle_new_user()"
+    }
+  ]
+}

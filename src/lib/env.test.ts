@@ -18,17 +18,37 @@ describe("parseEnv", () => {
     );
   });
 
+  const validServer = {
+    NEXT_PUBLIC_APP_URL: "http://localhost:3000",
+    DATABASE_URL: "postgresql://aibab_app:pw@127.0.0.1:54322/postgres",
+  };
+
   it("defaults NODE_ENV to development on the server schema", () => {
-    const env = parseEnv(serverEnvSchema, { NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    const env = parseEnv(serverEnvSchema, validServer);
     expect(env.NODE_ENV).toBe("development");
   });
 
   it("rejects an unknown NODE_ENV", () => {
+    expect(() => parseEnv(serverEnvSchema, { ...validServer, NODE_ENV: "staging" })).toThrow(
+      /NODE_ENV/,
+    );
+  });
+
+  it("requires DATABASE_URL on the server", () => {
     expect(() =>
-      parseEnv(serverEnvSchema, {
-        NEXT_PUBLIC_APP_URL: "http://localhost:3000",
-        NODE_ENV: "staging",
-      }),
-    ).toThrow(/NODE_ENV/);
+      parseEnv(serverEnvSchema, { NEXT_PUBLIC_APP_URL: "http://localhost:3000" }),
+    ).toThrow(/DATABASE_URL/);
+  });
+
+  it("rejects a non-postgres DATABASE_URL without echoing the value", () => {
+    const secret = "https://user:super-secret-password@db.example.com/postgres";
+    let message = "";
+    try {
+      parseEnv(serverEnvSchema, { ...validServer, DATABASE_URL: secret });
+    } catch (error) {
+      message = (error as Error).message;
+    }
+    expect(message).toMatch(/DATABASE_URL/);
+    expect(message).not.toContain("super-secret-password");
   });
 });

@@ -11,9 +11,17 @@ export const publicEnvSchema = z.object({
     .transform((value) => value.replace(/\/+$/, "")),
 });
 
-/** Server-only variables. Extended in later tasks (Supabase, Anthropic, ...). */
+/**
+ * Server-only variables. Extended in later tasks (Supabase, Anthropic, ...).
+ * Never log these values; error messages only name the variable.
+ */
 export const serverEnvSchema = publicEnvSchema.extend({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  /** Runtime connection as the `aibab_app` role. A master secret (see ARCHITECTURE.md). */
+  DATABASE_URL: z.url({
+    protocol: /^postgres(ql)?$/,
+    error: "must be a postgres:// or postgresql:// connection string",
+  }),
 });
 
 export type PublicEnv = z.output<typeof publicEnvSchema>;

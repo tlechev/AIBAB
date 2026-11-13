@@ -1,0 +1,5 @@
+-- Local seed data. MUST NOT contain credentials or role passwords:
+-- `supabase db push --include-seed` would apply this file to a hosted project.
+-- The local password of `aibab_app` is set by `npm run db:local-password`
+-- (scripts/set-local-db-password.ts), which only runs against the local container.
+-- tests/unit/local-db-password.test.ts enforces that no credentials appear here.
