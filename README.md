@@ -94,7 +94,7 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript (strict) · 
 - **Language:** code, identifiers, comments, database names, technical docs and commit messages are in English. User-facing text lives only in `messages/*.json` — never hard-code UI strings in components.
 - **Regional settings:** country, locale, time zone and currency are organization data; business logic never assumes a specific market (ADR-006).
 - **Money:** integer minor units plus an explicit currency (ADR-003).
-- **Security boundaries** (enforced by ESLint): `VerifiedUserId` is created only from a verified session; the raw `postgres` client is used only in `src/server/db/client.ts`.
+- **Security boundaries** (enforced by ESLint): `VerifiedUserId` is created only from a verified session; the raw `postgres` client is used only in `src/server/db/client.ts`; unsafe SQL APIs (`sql.raw`, `.unsafe`, `.execute()` with anything but a direct `` sql`...` `` template, aliases of `sql`) are forbidden in `src/` — build queries with `` sql`...` `` parameters or the query builder; compose dynamic queries as ``tx.execute(sql`${fragment}`)``.
 
 ## Known limitations
 
